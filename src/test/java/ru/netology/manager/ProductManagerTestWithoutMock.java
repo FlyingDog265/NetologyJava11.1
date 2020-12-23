@@ -23,7 +23,7 @@ public class ProductManagerTestWithoutMock {
         manager.add(smartphone1);
 
         Product[] actual = manager.searchBy("Author 1");
-        assertArrayEquals(excepted, actual, "Чот говно");
+        assertArrayEquals(excepted, actual, "Добавление продуктов в репо поломалось");
     }
 
     @Test
@@ -33,7 +33,7 @@ public class ProductManagerTestWithoutMock {
         manager.removeById(5678);
 
         Product[] actual = manager.searchBy("Author 1");
-        assertArrayEquals(excepted, actual, "Чот говно");
+        assertArrayEquals(excepted, actual, "Удаление продуктов из репо поломалось");
     }
 
 }
