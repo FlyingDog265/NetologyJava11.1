@@ -4,9 +4,11 @@ import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
+import ru.netology.helpers.NotFoundException;
 import ru.netology.repository.ProductRepository;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ProductManagerTestWithoutMock {
     ProductRepository repository = new ProductRepository();
@@ -36,4 +38,11 @@ public class ProductManagerTestWithoutMock {
         assertArrayEquals(excepted, actual, "Удаление продуктов из репо поломалось");
     }
 
+    @Test
+    public void shouldShowNotFoundException() {
+        manager.add(book1);
+        manager.add(book2);
+        assertThrows(NotFoundException.class, () -> manager.removeById(45654),
+                "Ошибка удвления несуществующего продукта из репо поломалась");
+    }
 }
